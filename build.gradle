@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'com.gradleup.shadow' version '9.4.2'
-    id 'com.azuredoom.hytale-tools' version '1.0.38'
+    id 'com.azuredoom.hytale-tools' version '1.0.48'
+    id 'com.azuredoom.hytalepublisher' version '1.+'
 }
 
 repositories {
@@ -25,8 +25,6 @@ base {
 }
 
 configurations {
-    shadowBundle
-    implementation.extendsFrom(shadowBundle)
     testCompileOnly.extendsFrom(compileOnly)
     testRuntimeOnly.extendsFrom(compileOnly)
 }
@@ -62,14 +60,39 @@ hytaleTools {
     requireDcevm = true
 } 
 
-shadowJar {
-    archiveClassifier.set('')
-    mergeServiceFiles()
-    configurations = [project.configurations.shadowBundle]
-}
+hytalePublisher {
+    version       = project.version
+    changelogFile = "changelog.md"
+    gameVersion   = project.hytale_version.toString()
 
-tasks.build {
-    dependsOn("shadowJar")
+    modtale {
+        enabled   = true
+        projectId = project.modtale_uuid
+        patchline = project.patchline.toString()
+    }
+
+    curseforge {
+        enabled   = true
+        projectId = project.curseforgeID
+
+        required "configly"
+    }
+
+    modifold {
+        enabled   = true
+        projectId = project.modifold_id
+
+        required "configly"
+    }
+
+        github {
+        enabled = true
+
+        generateReleaseNotes = true
+        includeJar        = true
+        includeSourcesJar = true
+        includeJavadocJar = true    
+    }
 }
 
 tasks.withType(Test).configureEach {

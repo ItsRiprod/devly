@@ -20,6 +20,6 @@
     "IncludesAssetPack": true,
     "Main": "com.riprod.devly.DevlyPlugin",
     "UpdateChecker": {
-        "CurseForge": ""
+        "CurseForge": "1668661"
     }
 }
