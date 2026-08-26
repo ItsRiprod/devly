@@ -1,0 +1,38 @@
+command.desc=Patchly development tools: minify overrides and sync editor edits into patches
+command.minify.desc=Convert a full .json override into a minimal .patch/.put
+command.minify.target.desc=File name or relative path inside a dev pack
+command.minify.pack.desc=Limit resolution to a single pack (Group:Name or a substring)
+command.minify.dryrun.desc=Preview the outcome without writing or deleting any files
+command.minify.all.desc=Process every eligible file across dev packs
+command.minify.verbose.desc=Also report every file left untouched
+command.monitor.desc=Toggle syncing asset editor edits back into their patch sources
+command.monitor.enable.desc=Explicitly enable or disable instead of toggling
+
+prefix=<color is="#55aaff"><b>[Devly]</b></color>
+enabled=<color is="#55ff55">enabled</color>
+disabled=<color is="#888888">disabled</color>
+
+dry.wrap=<color is="#888888">[dry-run]</color> {msg}
+skip.line=<color is="#888888">skip:</color> {msg}
+
+match.none=<msg key="server.devly.v1.prefix"/> <color is="#ff5555">No eligible dev pack file matches <b>{query}</b></color>
+match.nonePack=<msg key="server.devly.v1.prefix"/> <color is="#ff5555">No eligible dev pack file matches <b>{query}</b> in pack <b>{pack}</b></color>
+match.ambiguous=<msg key="server.devly.v1.prefix"/> <color is="#ff5555"><b>{query}</b> matches {count} files; qualify with --pack or a fuller path</color>
+match.line=  {pack} : {path}
+minify.usage=<msg key="server.devly.v1.prefix"/> Usage: <b>/devly minify (target) [--pack=(pack)] [--dryrun]</b> or <b>/devly minify --all [--pack=(pack)] [--dryrun] [--verbose]</b>
+all.done=<msg key="server.devly.v1.prefix"/> {changed} converted, {skipped} left untouched
+all.dry=<msg key="server.devly.v1.prefix"/> {changed} would convert, {skipped} left untouched
+
+minify.done=Minified <b>{file}</b> into <b>{target}</b>
+skip.parse=Could not parse {file}
+skip.alreadySource={file} is already a patch source
+skip.ignored={file} is marked $Devly.ignore; left as .json
+skip.noKind={file} has no base and no patchly metadata; left untouched
+skip.noBase={file} maps to {kind} but no base asset exists; add $Requires (or similar) to emit a .put instead
+skip.verifyFailed={file}: generated patch does not reproduce the source; left as .json
+skip.writeFailed=Write failed for {file}: {error}
+
+monitor.started=<msg key="server.devly.v1.prefix"/> Editor syncback <msg key="server.devly.v1.enabled"/>\n<color is="#888888">Edits saved to the Patchly override pack now flow back into their owning .patch/.put; results are reported in the server log</color>
+monitor.stopped=<msg key="server.devly.v1.prefix"/> Editor syncback <msg key="server.devly.v1.disabled"/>
+monitor.already=<msg key="server.devly.v1.prefix"/> <color is="#888888">Editor syncback is already in that state</color>
+monitor.unavailable=<msg key="server.devly.v1.prefix"/> <color is="#ff5555">Patchly override pack not found; is Patchly loaded with at least one applied patch?</color>

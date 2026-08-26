@@ -1,0 +1,25 @@
+{
+    "Group": "Riprod",
+    "Name": "Devly",
+    "Version": "1.0.0",
+    "Description": "Patchly Development extension for patchly utils during file fabrication",
+    "Authors": [
+        {
+            "Name": "Riprod"
+        }
+    ],
+    "Website": "https://modtale.net/mod/devly",
+    "ServerVersion": ">=0.5.0 <0.7.0",
+    "Dependencies": {
+        "Riprod:Patchly": "*"
+    },
+    "OptionalDependencies": {
+        
+    },
+    "DisabledByDefault": false,
+    "IncludesAssetPack": true,
+    "Main": "com.riprod.devly.DevlyPlugin",
+    "UpdateChecker": {
+        "CurseForge": ""
+    }
+}
