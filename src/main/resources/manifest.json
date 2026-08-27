@@ -1,7 +1,7 @@
 {
     "Group": "Riprod",
     "Name": "Devly",
-    "Version": "1.0.0",
+    "Version": "1.0.1",
     "Description": "Patchly Development extension for patchly utils during file fabrication",
     "Authors": [
         {
@@ -9,7 +9,7 @@
         }
     ],
     "Website": "https://modtale.net/mod/devly",
-    "ServerVersion": ">=0.5.0 <0.7.0",
+    "ServerVersion": ">=0.6.0 <0.7.0",
     "Dependencies": {
         "Riprod:Patchly": "*"
     },
