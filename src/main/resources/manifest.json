@@ -1,7 +1,7 @@
 {
     "Group": "Riprod",
     "Name": "Devly",
-    "Version": "1.1.0",
+    "Version": "1.2.0",
     "Description": "Patchly Development extension for patchly utils during file fabrication",
     "Authors": [
         {
