@@ -17,15 +17,21 @@ jobs:
       contents: write
 
     env:
-      MODTALE_KEY: ${{ secrets.MODTALE_KEY }}
-      CURSE_KEY: ${{ secrets.CURSE_KEY }}
-      MODIFOLD_KEY: ${{ secrets.MODIFOLD_KEY }}
-      TCLI_AUTH_TOKEN: ${{ secrets.TCLI_AUTH_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
-      MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
 
     steps:
+      - name: Load publishing keys
+        uses: 1password/load-secrets-action@v5
+        with:
+          export-env: true
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+          MODTALE_KEY: op://HytaleCI/Modtale/credential
+          CURSE_KEY: op://HytaleCI/CurseForge/credential
+          MODIFOLD_KEY: op://HytaleCI/Modifold/credential
+          MAVEN_USERNAME: op://HytaleCI/Maven/username
+          MAVEN_PASSWORD: op://HytaleCI/Maven/credential
+
       - name: Checkout repository
         uses: actions/checkout@v6
         with:

@@ -1,3 +1,6 @@
+# [1.3.2]
+Updated to use 1password for ci/cd
+
 # [1.2.0]
 Updated to Update 7
 
